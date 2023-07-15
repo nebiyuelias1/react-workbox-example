@@ -7,11 +7,17 @@ module.exports = {
   cleanupOutdatedCaches: true,
   navigateFallback: '/offline', // Replace with the correct URL of your offline page route
   navigateFallbackDenylist: [new RegExp('^/_'), new RegExp('/[^/?]+\\.[^/]+$')],
-  // Customize the following to match your project structure and offline page requirements
-  additionalManifestEntries: [
+  runtimeCaching: [
     {
-      url: '/offline', // Replace with the correct URL of your offline page route
-      revision: null,
+      urlPattern: /\/assets\/fallback\.html$/,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'html-cache',
+        cacheableResponse: {
+          statuses: [0, 200],
+        },
+      },
     },
+    // Add other routes for precaching other assets
   ],
 };
