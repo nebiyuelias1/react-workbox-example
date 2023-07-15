@@ -1,4 +1,5 @@
 module.exports = {
+  globDirectory: 'dist/org',
   swDest: 'dist/org/service-worker.js',
   clientsClaim: true,
   skipWaiting: true,
