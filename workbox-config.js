@@ -24,7 +24,7 @@ module.exports = {
   // Customize the following to match your project structure and offline page requirements
   additionalManifestEntries: [
     {
-      url: '/aseets/fallback.html', // Replace with the correct URL of your offline page route
+      url: '/assets/fallback.html', // Replace with the correct URL of your offline page route
       revision: null,
     },
   ],
