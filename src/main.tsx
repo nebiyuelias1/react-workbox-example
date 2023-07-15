@@ -19,13 +19,13 @@ if ('serviceWorker' in navigator) {
 
 const router = createBrowserRouter([
   {
+    path: "/offline",
+    element: <h1>Offline page</h1>
+  },
+  {
     path: "/",
     element: <h1>Hello world!</h1>,
   },
-  {
-    path: "/offline",
-    element: <h1>Offline page</h1>
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
