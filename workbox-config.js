@@ -1,23 +1,31 @@
 module.exports = {
   globDirectory: 'dist/org',
+  globPatterns: ['**/*.{txt,ico,html,js}'],
   swDest: 'dist/org/service-worker.js',
   clientsClaim: true,
   skipWaiting: true,
-  offlineGoogleAnalytics: true,
-  cleanupOutdatedCaches: true,
-  navigateFallback: '/offline', // Replace with the correct URL of your offline page route
-  navigateFallbackDenylist: [new RegExp('^/_'), new RegExp('/[^/?]+\\.[^/]+$')],
   runtimeCaching: [
     {
-      urlPattern: /\/assets\/fallback\.html$/,
-      handler: 'NetworkFirst',
+      urlPattern: /\.(?:png|jpg|jpeg|gif|svg|woff|woff2)$/,
+      handler: 'CacheFirst',
       options: {
-        cacheName: 'html-cache',
-        cacheableResponse: {
-          statuses: [0, 200],
+        cacheName: 'images',
+        expiration: {
+          maxEntries: 10,
+          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
         },
       },
     },
-    // Add other routes for precaching other assets
+  ],
+  offlineGoogleAnalytics: true,
+  cleanupOutdatedCaches: true,
+  navigateFallback: '/assets/fallback.html', // Replace with the correct URL of your offline page route
+  navigateFallbackDenylist: [new RegExp('^/_'), new RegExp('/[^/?]+\\.[^/]+$')],
+  // Customize the following to match your project structure and offline page requirements
+  additionalManifestEntries: [
+    {
+      url: '/aseets/fallback.html', // Replace with the correct URL of your offline page route
+      revision: null,
+    },
   ],
 };
