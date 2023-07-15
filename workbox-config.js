@@ -1,6 +1,7 @@
 module.exports = {
   globDirectory: 'dist/org',
   swDest: 'dist/org/service-worker.js',
+  swSrc: 'src-sw.js',
   clientsClaim: true,
   skipWaiting: true,
   offlineGoogleAnalytics: true,
