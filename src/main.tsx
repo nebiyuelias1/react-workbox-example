@@ -20,7 +20,7 @@ if ('serviceWorker' in navigator) {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Hello world!</h1>,
+    element: <h1>Hello world! <a href="https://google.com">Google</a></h1>,
   },
 ]);
 
